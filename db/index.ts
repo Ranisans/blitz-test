@@ -1,15 +1,16 @@
-import { PrismaClient } from "@prisma/client"
-export * from "@prisma/client"
+import { PrismaClient } from "@prisma/client";
 
-let prisma: PrismaClient
+export * from "@prisma/client";
 
-if (process.env.NODE_ENV === "production") {
-    prisma = new PrismaClient()
-} else {
-    // Ensure the prisma instance is re-used during hot-reloading
-    // Otherwise, a new client will be created on every reload
-    globalThis["prisma"] = globalThis["prisma"] || new PrismaClient()
-    prisma = globalThis["prisma"]
-}
+const getPrisma = (): PrismaClient => {
+  if (process.env.NODE_ENV === "production") {
+    return new PrismaClient();
+  }
+  // Ensure the prisma instance is re-used during hot-reloading
+  // Otherwise, a new client will be created on every reload
+  return globalThis.prisma || new PrismaClient();
+};
 
-export default prisma
+const prisma = getPrisma();
+
+export default prisma;

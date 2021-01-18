@@ -1,16 +1,16 @@
-import React from "react"
-import { AuthenticationError, Link, useMutation } from "blitz"
-import { LabeledTextField } from "app/components/LabeledTextField"
-import { Form, FORM_ERROR } from "app/components/Form"
-import login from "app/auth/mutations/login"
-import { LoginInput } from "app/auth/validations"
+import React from "react";
+import { AuthenticationError, Link, useMutation } from "blitz";
+import { LabeledTextField } from "app/components/LabeledTextField";
+import { Form, FORM_ERROR } from "app/components/Form";
+import login from "app/auth/mutations/login";
+import { LoginInput } from "app/auth/validations";
 
 type LoginFormProps = {
-  onSuccess?: () => void
-}
+  onSuccess?: () => void;
+};
 
-export const LoginForm = (props: LoginFormProps) => {
-  const [loginMutation] = useMutation(login)
+export const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
+  const [loginMutation] = useMutation(login);
 
   return (
     <div>
@@ -20,19 +20,18 @@ export const LoginForm = (props: LoginFormProps) => {
         submitText="Login"
         schema={LoginInput}
         initialValues={{ email: "", password: "" }}
+        /* eslint-disable-next-line consistent-return */
         onSubmit={async (values) => {
           try {
-            await loginMutation(values)
-            props.onSuccess?.()
+            await loginMutation(values);
+            props.onSuccess?.();
           } catch (error) {
             if (error instanceof AuthenticationError) {
-              return { [FORM_ERROR]: "Sorry, those credentials are invalid" }
-            } else {
-              return {
-                [FORM_ERROR]:
-                  "Sorry, we had an unexpected error. Please try again. - " + error.toString(),
-              }
+              return { [FORM_ERROR]: "Sorry, those credentials are invalid" };
             }
+            return {
+              [FORM_ERROR]: `Sorry, we had an unexpected error. Please try again. - ${error.toString()}`,
+            };
           }
         }}
       >
@@ -44,7 +43,7 @@ export const LoginForm = (props: LoginFormProps) => {
         Or <Link href="/signup">Sign Up</Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

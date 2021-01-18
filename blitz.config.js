@@ -1,4 +1,5 @@
-const { sessionMiddleware, simpleRolesIsAuthorized } = require("@blitzjs/server")
+// eslint-disable-next-line import/no-extraneous-dependencies
+const { sessionMiddleware, simpleRolesIsAuthorized } = require("@blitzjs/server");
 
 module.exports = {
   middleware: [
@@ -14,4 +15,4 @@ module.exports = {
     return config
   },
   */
-}
+};

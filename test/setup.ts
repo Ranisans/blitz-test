@@ -2,5 +2,7 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import "@testing-library/jest-dom/extend-expect"
-require("dotenv-flow").config({ silent: true })
+import "@testing-library/jest-dom/extend-expect";
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+require("dotenv-flow").config({ silent: true });
