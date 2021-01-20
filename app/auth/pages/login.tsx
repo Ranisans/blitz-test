@@ -6,11 +6,7 @@ import { LoginForm } from "app/auth/components/LoginForm";
 const LoginPage: BlitzPage = () => {
   const router = useRouter();
 
-  return (
-    <div>
-      <LoginForm onSuccess={() => router.push("/")} />
-    </div>
-  );
+  return <LoginForm onSuccess={() => router.push("/")} />;
 };
 
 LoginPage.getLayout = (page) => <Layout title="Log In">{page}</Layout>;

@@ -10,6 +10,10 @@ import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import { useQueryErrorResetBoundary } from "react-query";
 import LoginForm from "app/auth/components/LoginForm";
 
+import { createMuiTheme } from "@material-ui/core/styles";
+
+import "./index.scss";
+
 const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   const getLayout = Component.getLayout || ((page) => page);
   const router = useRouter();
@@ -46,5 +50,12 @@ function RootErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
     />
   );
 }
+
+// You can customize this as you want and even move it out to a separate file
+const theme = createMuiTheme({
+  palette: {
+    type: "light",
+  },
+});
 
 export default App;

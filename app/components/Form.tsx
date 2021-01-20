@@ -1,6 +1,7 @@
 import React, { ReactNode, PropsWithoutRef } from "react";
 import { Form as FinalForm, FormProps as FinalFormProps } from "react-final-form";
 import * as z from "zod";
+import { Button } from "@material-ui/core";
 
 export { FORM_ERROR } from "final-form";
 
@@ -59,9 +60,9 @@ export const Form: TForm = ({
             </div>
           )}
 
-          <button type="submit" disabled={submitting}>
+          <Button type="submit" variant="contained" color="primary" disabled={submitting}>
             {submitText}
-          </button>
+          </Button>
 
           <style global jsx>
             {`
