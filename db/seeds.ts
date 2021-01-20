@@ -1,4 +1,4 @@
-// import db from "./index"
+import db from "./index";
 
 /*
  * This seed function is executed when you run `blitz db seed`.
@@ -7,10 +7,14 @@
  * or https://github.com/Marak/Faker.js to easily generate
  * realistic data.
  */
-const seed = async () => {
-  // for (let i = 0; i < 5; i++) {
-  //   await db.project.create({ data: { name: "Project " + i } })
-  // }
+
+const role = ["Administrator", "DutyOfficer", "Assistant", "User"];
+
+const seed = async (): Promise<void> => {
+  for (let i = 0; i < role.length; i += 1) {
+    // eslint-disable-next-line no-await-in-loop
+    await db.role.create({ data: { name: role[i] } });
+  }
 };
 
 export default seed;
