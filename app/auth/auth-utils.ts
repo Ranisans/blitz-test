@@ -2,8 +2,8 @@ import { SecurePassword, AuthenticationError } from "blitz";
 import db from "db";
 
 // eslint-disable-next-line import/prefer-default-export
-export const authenticateUser = async (email: string, password: string) => {
-  const user = await db.user.findFirst({ where: { email } });
+export const authenticateUser = async (login: string, password: string) => {
+  const user = await db.user.findFirst({ where: { login } });
   if (!user) throw new AuthenticationError();
 
   const result = await SecurePassword.verify(user.hashedPassword, password);
