@@ -14,8 +14,7 @@ const role = ["Administrator", "DutyOfficer", "Assistant", "User"];
 const seed = async (): Promise<void> => {
   const { ADMIN_NAME, ADMIN_LOGIN, ADMIN_PASSWORD } = process.env;
 
-  if (ADMIN_NAME === undefined || ADMIN_LOGIN === undefined || ADMIN_PASSWORD === undefined)
-    throw new Error();
+  if (!ADMIN_NAME || !ADMIN_LOGIN || !ADMIN_PASSWORD) throw new Error();
 
   for (let i = 0; i < role.length; i += 1) {
     // eslint-disable-next-line no-await-in-loop
