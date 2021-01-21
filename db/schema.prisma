@@ -45,3 +45,48 @@ model Session {
   publicData         String?
   privateData        String?
 }
+
+model Client {
+  id            Int      @default(autoincrement()) @id
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  name          String
+  enabled       Boolean  @default(true)
+  mainObjects   MainObject[]
+}
+
+model Chief {
+  id            Int      @default(autoincrement()) @id
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  name          String
+  enabled       Boolean  @default(true)
+  mainObjects   MainObject[]
+}
+
+model Deputy {
+  id            Int      @default(autoincrement()) @id
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  name          String
+  enabled       Boolean  @default(true)
+  mainObjects   MainObject[]
+}
+
+model Route {
+  id            Int      @default(autoincrement()) @id
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  name          String
+  enabled       Boolean  @default(true)
+  mainObjects   MainObject[]
+}
+
+model Company {
+  id            Int      @default(autoincrement()) @id
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  name          String
+  enabled       Boolean  @default(true)
+  mainObjects   MainObject[]
+}
