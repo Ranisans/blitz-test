@@ -90,3 +90,31 @@ model Company {
   enabled       Boolean  @default(true)
   mainObjects   MainObject[]
 }
+
+model MainObject {
+  id          Int      @default(autoincrement()) @id
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  number      String
+  title       String?
+  client      Client   @relation(fields: [clientId], references: [id])
+  clientId    Int
+  address     String?
+  telephones  String?
+  mode        String?
+  signal      String?
+  chief       Chief    @relation(fields: [chiefId], references: [id])
+  chiefId     Int
+  deputy      Deputy   @relation(fields: [deputyId], references: [id])
+  deputyId    Int
+  route       Route    @relation(fields: [routeId], references: [id])
+  routeId     Int
+  gps         String?
+  company     Company  @relation(fields: [companyId], references: [id])
+  companyId   Int
+  typeCheck   Int?
+  dayMode     Int      @default(0)
+  daytimeMode Int      @default(0)
+  nightMode   Int      @default(0)
+  opened      Boolean
+}
