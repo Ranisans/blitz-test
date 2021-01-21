@@ -17,14 +17,19 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
+    paddingTop: "10vh",
     height: "100vh",
   },
-  title: {
+  titleBlock: {
     paddingTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: "1.8rem",
+    color: "#9D9C9C",
   },
   form: {
     maxWidth: 500,
@@ -38,8 +43,8 @@ export const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 
   return (
     <Container component="main" className={styles.container}>
-      <div className={styles.title}>
-        <Typography component="h1" variant="h5">
+      <div className={styles.titleBlock}>
+        <Typography component="h1" variant="h5" className={styles.title}>
           Введите учетные данные
         </Typography>
       </div>
