@@ -36,5 +36,5 @@ export default async function getMainObjects(
     },
   });
 
-  return mainObjects ? ((mainObjects as unknown) as IObject[]) : null;
+  return (mainObjects as unknown) as IObject[];
 }
