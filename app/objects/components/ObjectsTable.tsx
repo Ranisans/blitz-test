@@ -2,12 +2,11 @@ import React from "react";
 import { TableRow, TableCell } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import clsx from "clsx";
+import { usePaginatedQuery } from "blitz";
 import { IHeader, IRow } from "../../constants/table";
-import { CELL_HEIGHT, COLUMNS, HEADER_HEIGHT, IObject, TYPE_CHECK } from "../constants";
+import { CELL_HEIGHT, COLUMNS, HEADER_HEIGHT, TYPE_CHECK } from "../constants";
 import { VirtualTable } from "../../components/VirtualTable";
-
-// plug
-const data: IObject[] = [];
+import getMainObjects from "../queries/getMainObjects";
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -50,6 +49,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const ObjectTable: React.FC = () => {
+  const [data] = usePaginatedQuery(getMainObjects, {
+    orderBy: { id: "asc" },
+  });
+
   const styles = useStyles();
 
   const getRowClassName = (index: number): string => {

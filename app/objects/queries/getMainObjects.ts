@@ -7,26 +7,12 @@ type GetMainObjectsInput = Pick<Prisma.FindManyMainObjectArgs, "where" | "orderB
 export default async function getMainObjects(
   { where, orderBy }: GetMainObjectsInput,
   ctx: Ctx
-): Promise<IObject[] | null> {
+): Promise<IObject[]> {
   ctx.session.authorize();
 
   const mainObjects = await db.mainObject.findMany({
     where,
     orderBy,
-    select: {
-      number: true,
-      title: true,
-      address: true,
-      telephones: true,
-      mode: true,
-      signal: true,
-      gps: true,
-      typeCheck: true,
-      dayMode: true,
-      daytimeMode: true,
-      nightMode: true,
-      opened: true,
-    },
     include: {
       client: { select: { name: true } },
       chief: { select: { name: true } },
@@ -36,5 +22,5 @@ export default async function getMainObjects(
     },
   });
 
-  return (mainObjects as unknown) as IObject[];
+  return ((mainObjects as unknown) as IObject[]) || [];
 }
