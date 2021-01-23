@@ -50,5 +50,7 @@ module.exports = {
     "@typescript-eslint/no-var-requires": "off",
     "prettier/prettier": "error",
     "react/require-default-props": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
   },
 };
