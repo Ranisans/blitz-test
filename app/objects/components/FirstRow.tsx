@@ -2,8 +2,6 @@ import React from "react";
 import { FormControl, InputLabel, Select, MenuItem, Button } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import clsx from "clsx";
-import excelIcon from "public/excel-icon.png";
-import mapIcon from "public/map-icon.png";
 import { SORTING_VALUES } from "../constants";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -31,10 +29,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     minHeight: 50,
   },
   excelButton: {
-    backgroundImage: `url(${excelIcon})`,
+    backgroundImage: `url(/excel-icon.png)`,
   },
   mapButton: {
-    backgroundImage: `url(${mapIcon})`,
+    backgroundImage: `url(/map-icon.png)`,
   },
 }));
 

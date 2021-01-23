@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+}
+.menu_container {
+  min-height: 120px;
+  display: grid;
+  padding: 0 15px 5px 15px;
+  grid-template-rows: 55px 1fr;
+  grid-gap: 5px;
+  background-color: #afafaf;
+  color: black;
+}

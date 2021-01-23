@@ -1,26 +1,22 @@
 import React, { Suspense } from "react";
 import Layout from "app/layouts/Layout";
-import { Link, usePaginatedQuery, BlitzPage } from "blitz";
-import getMainObjects from "app/objects/queries/getMainObjects";
+import { BlitzPage } from "blitz";
+import FirstRow from "../../components/FirstRow";
+import SecondRow from "../../components/SecondRow";
+import ObjectTable from "../../components/ObjectsTable";
+
+import styles from "./index.module.scss";
 
 export const MainObjectsList: React.FC = () => {
-  const [mainObjects] = usePaginatedQuery(getMainObjects, {
-    orderBy: { id: "asc" },
-  });
-
-  if (mainObjects) {
-    return (
-      <div>
-        <ul>
-          {mainObjects.map((mainObject) => (
-            <li key={mainObject.number}>{mainObject.number}</li>
-          ))}
-        </ul>
+  return (
+    <div className={styles.container}>
+      <div className={styles.menu_container}>
+        <FirstRow />
+        <SecondRow />
       </div>
-    );
-  }
-
-  return <div>Empty</div>;
+      <ObjectTable />
+    </div>
+  );
 };
 
 const MainObjectsPage: BlitzPage = () => {
