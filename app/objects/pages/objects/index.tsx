@@ -4,6 +4,7 @@ import { BlitzPage } from "blitz";
 import FirstRow from "../../components/FirstRow";
 import SecondRow from "../../components/SecondRow";
 import ObjectTable from "../../components/ObjectsTable";
+import { StoreProvider } from "../../store/context";
 
 import styles from "./index.module.scss";
 
@@ -21,11 +22,13 @@ export const MainObjectsList: React.FC = () => {
 
 const MainObjectsPage: BlitzPage = () => {
   return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <MainObjectsList />
-      </Suspense>
-    </div>
+    <StoreProvider>
+      <div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <MainObjectsList />
+        </Suspense>
+      </div>
+    </StoreProvider>
   );
 };
 

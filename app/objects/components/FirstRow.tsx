@@ -2,7 +2,9 @@ import React from "react";
 import { FormControl, InputLabel, Select, MenuItem, Button } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import clsx from "clsx";
+import { observer } from "mobx-react-lite";
 import { SORTING_VALUES } from "../constants";
+import { storeContext } from "../store/context";
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -36,8 +38,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const FirstRow: React.FC = () => {
+const FirstRow: React.FC = observer(() => {
   const styles = useStyles();
+  const store = React.useContext(storeContext);
+  if (!store) throw Error("Store shouldn't be null");
+  const { reportSorting, setReportSorting } = store;
+
+  const handleReportSortingChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    const value = event.target.value as number;
+    setReportSorting(value);
+  };
 
   return (
     <div className={styles.container}>
@@ -49,6 +59,8 @@ const FirstRow: React.FC = () => {
               name: "sortingType",
               id: "object_list-sorting_type",
             }}
+            value={reportSorting.get()}
+            onChange={handleReportSortingChange}
           >
             {SORTING_VALUES.map((item) => (
               <MenuItem key={item.label} value={item.value}>
@@ -62,6 +74,6 @@ const FirstRow: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default FirstRow;

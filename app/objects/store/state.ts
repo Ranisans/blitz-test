@@ -1,53 +1,54 @@
+import { observable } from "mobx";
 import { ECheckTypes, ESortingValues } from "../constants";
 
 export const createStore = () => {
   const store = {
-    objectNumber: "",
-    activeObjects: false,
-    chief: [] as number[],
-    client: [] as number[],
-    deputy: [] as number[],
-    company: [] as number[],
-    path: [] as number[],
-    typeCheck: ECheckTypes.All,
-    reportSorting: ESortingValues.CHIEF,
+    objectNumber: observable.box(""),
+    activeObjects: observable.box(false),
+    chief: observable.box([] as number[]),
+    client: observable.box([] as number[]),
+    deputy: observable.box([] as number[]),
+    company: observable.box([] as number[]),
+    path: observable.box([] as number[]),
+    typeCheck: observable.box(ECheckTypes.All),
+    reportSorting: observable.box(ESortingValues.CHIEF),
     setObjects: (value: string) => {
-      store.objectNumber = value;
+      store.objectNumber.set(value);
     },
     setActiveObject: (value: boolean) => {
-      store.activeObjects = value;
+      store.activeObjects.set(value);
     },
     setChief: (value: number[]) => {
-      store.chief = value;
+      store.chief.set(value);
     },
     setClient: (value: number[]) => {
-      store.client = value;
+      store.client.set(value);
     },
     setDeputy: (value: number[]) => {
-      store.deputy = value;
+      store.deputy.set(value);
     },
     setCompany: (value: number[]) => {
-      store.company = value;
+      store.company.set(value);
     },
     setPath: (value: number[]) => {
-      store.path = value;
+      store.path.set(value);
     },
     setTypeCheck: (value: ECheckTypes) => {
-      store.typeCheck = value;
+      store.typeCheck.set(value);
     },
-    setReportSorting: (value: number) => {
-      store.reportSorting = value;
+    setReportSorting: (value: ESortingValues) => {
+      store.reportSorting.set(value);
     },
     resetState: () => {
-      store.objectNumber = "";
-      store.activeObjects = false;
-      store.chief = [];
-      store.client = [];
-      store.deputy = [];
-      store.company = [];
-      store.path = [];
-      store.typeCheck = 0;
-      store.reportSorting = 1;
+      store.objectNumber.set("");
+      store.activeObjects.set(false);
+      store.chief.set([]);
+      store.client.set([]);
+      store.deputy.set([]);
+      store.company.set([]);
+      store.path.set([]);
+      store.typeCheck.set(0);
+      store.reportSorting.set(ESortingValues.CHIEF);
     },
   };
 
