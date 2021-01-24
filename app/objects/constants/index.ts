@@ -24,6 +24,16 @@ export const CHECK_TYPES = [
   { label: "По указанию", value: ECheckTypes.BY_ORDER },
 ];
 
+export enum ECheckType {
+  USUAL,
+  BY_ORDER,
+}
+
+export const CHECK_TYPE = [
+  { label: "Обычная", id: ECheckType.USUAL },
+  { label: "По указанию", id: ECheckType.BY_ORDER },
+];
+
 export interface IColumn {
   label: string;
   dataKey: string;
